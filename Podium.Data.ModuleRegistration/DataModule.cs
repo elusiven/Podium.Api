@@ -9,11 +9,8 @@ namespace Podium.Data.ModuleRegistration
 {
     public class DataModule : Module
     {
-        private readonly string _connectionString;
-
-        public DataModule(string connectionString)
+        public DataModule()
         {
-            _connectionString = connectionString;
         }
 
         protected override void Load(ContainerBuilder builder)
