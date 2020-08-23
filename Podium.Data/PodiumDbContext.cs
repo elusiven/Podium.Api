@@ -15,3 +15,4 @@ namespace Podium.Data
         public DbSet<UserDetails> UserDetails { get; set; }
         public DbSet<LoanCalculation> LoanCalculations { get; set; }
     }
+}

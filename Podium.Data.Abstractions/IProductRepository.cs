@@ -2,7 +2,7 @@
 
 namespace Podium.Data.Abstractions
 {
-    public interface IUserDetailsRepository : IBaseRepository<UserDetails>
+    public interface IProductRepository : IBaseRepository<Product>
     {
     }
 }

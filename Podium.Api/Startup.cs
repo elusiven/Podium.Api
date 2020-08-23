@@ -3,9 +3,11 @@ using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Podium.Data;
 using Podium.Data.ModuleRegistration;
 using Podium.Service.MappingProfiles;
 
@@ -24,6 +26,9 @@ namespace Podium.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+
+            // Add Database context
+            services.AddDbContext<PodiumDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("SqlServer"), x => x.MigrationsAssembly("Podium.Data")));
 
             services.AddSwaggerGen();
             services.AddAutoMapper(typeof(AutoMappingProfiles));
@@ -68,7 +73,7 @@ namespace Podium.Api
         /// <param name="builder"></param>
         public void ConfigureContainer(ContainerBuilder builder)
         {
-            builder.RegisterModule(new DataModule(Configuration.GetConnectionString("SqlServer")));
+            builder.RegisterModule(new DataModule());
         }
 
         /// <summary>

@@ -4,8 +4,4 @@
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\Podium.Data.Primitives\Podium.Data.Primitives.csproj" />
-  </ItemGroup>
-
 </Project>
