@@ -12,6 +12,8 @@ namespace Podium.Data.Abstractions
 
         Task<IEnumerable<T>> GetAllAsync();
 
+        IQueryable<T> FindBy(System.Linq.Expressions.Expression<Func<T, bool>> predicate);
+
         Task<T> CreateAsync(T entity);
 
         Task<T> UpdateAsync(T entity);

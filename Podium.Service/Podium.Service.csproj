@@ -11,6 +11,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Podium.Data.Abstractions\Podium.Data.Abstractions.csproj" />
+    <ProjectReference Include="..\Podium.Service.Abstractions\Podium.Service.Abstractions.csproj" />
     <ProjectReference Include="..\Podium.Service.Common\Podium.Service.Common.csproj" />
     <ProjectReference Include="..\Podium.Service.Primitives\Podium.Service.Primitives.csproj" />
   </ItemGroup>

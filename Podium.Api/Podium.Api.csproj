@@ -15,6 +15,7 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.7" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.4" />
     <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="5.5.1" />
     <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="5.5.1" />
     <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUi" Version="5.5.1" />
@@ -24,10 +25,7 @@
     <ProjectReference Include="..\Podium.Data.ModuleRegistration\Podium.Data.ModuleRegistration.csproj" />
     <ProjectReference Include="..\Podium.Data\Podium.Data.csproj" />
     <ProjectReference Include="..\Podium.Service.MappingProfiles\Podium.Service.MappingProfiles.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Controllers\V1\" />
+    <ProjectReference Include="..\Podium.Service.ModuleRegistration\Podium.Service.ModuleRegistration.csproj" />
   </ItemGroup>
 
 

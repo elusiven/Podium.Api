@@ -10,6 +10,7 @@ using Microsoft.Extensions.Hosting;
 using Podium.Data;
 using Podium.Data.ModuleRegistration;
 using Podium.Service.MappingProfiles;
+using Podium.Service.ModuleRegistration;
 
 namespace Podium.Api
 {
@@ -31,6 +32,7 @@ namespace Podium.Api
             services.AddDbContext<PodiumDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("SqlServer"), x => x.MigrationsAssembly("Podium.Data")));
 
             services.AddSwaggerGen();
+
             services.AddAutoMapper(typeof(AutoMappingProfiles));
 
             // Register API versioning
@@ -45,6 +47,11 @@ namespace Podium.Api
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            app.UseCors(builder => builder
+                .AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader());
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -52,6 +59,7 @@ namespace Podium.Api
 
             app.UseHttpsRedirection();
 
+            app.UseSwagger();
             app.UseSwaggerUI(c =>
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "Podium Data API V1");
@@ -74,6 +82,7 @@ namespace Podium.Api
         public void ConfigureContainer(ContainerBuilder builder)
         {
             builder.RegisterModule(new DataModule());
+            builder.RegisterModule(new ServiceModule());
         }
 
         /// <summary>

@@ -8,5 +8,7 @@ namespace Podium.Service.Primitives.Models.PropertyDetail
 {
     public class PropertyDetailResourceModel
     {
+        public decimal PropertyValue { get; set; }
+        public decimal DepositAmount { get; set; }
     }
 }

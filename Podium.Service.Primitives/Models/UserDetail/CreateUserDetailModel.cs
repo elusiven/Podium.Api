@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Podium.Service.Primitives.Models.UserDetail
 {
-    public class CreateUserDetailResourceModel
+    public class CreateUserDetailModel
     {
         [Required]
         [MinLength(3)]

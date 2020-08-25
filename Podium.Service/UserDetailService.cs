@@ -4,12 +4,13 @@ using AutoMapper;
 using Microsoft.Extensions.Logging;
 using Podium.Data.Abstractions;
 using Podium.Data.Primitives.Entities;
+using Podium.Service.Abstractions;
 using Podium.Service.Common.Exceptions;
 using Podium.Service.Primitives.Models.UserDetail;
 
 namespace Podium.Service
 {
-    public class UserDetailService
+    public class UserDetailService : IUserDetailService
     {
         private readonly ILogger<UserDetailService> _logger;
         private readonly IUserDetailsRepository _userDetailsRepository;
@@ -43,7 +44,7 @@ namespace Podium.Service
             return userDetails;
         }
 
-        public async Task<UserDetailResourceModel> Create(CreateUserDetailResourceModel model)
+        public async Task<UserDetailResourceModel> Create(CreateUserDetailModel model)
         {
             _logger.LogInformation("UserDetailService::Create");
 

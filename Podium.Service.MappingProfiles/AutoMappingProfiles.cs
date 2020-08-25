@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using AutoMapper;
+﻿using AutoMapper;
+using Podium.Data.Primitives.Entities;
+using Podium.Service.Primitives.Models.UserDetail;
 
 namespace Podium.Service.MappingProfiles
 {
@@ -11,6 +8,8 @@ namespace Podium.Service.MappingProfiles
     {
         public AutoMappingProfiles()
         {
+            CreateMap<UserDetails, UserDetailResourceModel>().ReverseMap();
+            CreateMap<UserDetails, CreateUserDetailModel>().ReverseMap();
         }
     }
 }

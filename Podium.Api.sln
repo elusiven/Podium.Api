@@ -7,27 +7,33 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Podium.Api", "Podium.Api\Po
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{EFE7258D-918E-4BA2-9450-DCBE793DB806}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Podium.Tests", "Podium.Tests\Podium.Tests.csproj", "{B10A3ACE-CFCF-46E4-ADC8-51A23DB12D18}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Podium.Tests", "Podium.Tests\Podium.Tests.csproj", "{B10A3ACE-CFCF-46E4-ADC8-51A23DB12D18}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{62B49901-B873-4EDD-AD02-4E38B21C75A2}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application", "Application", "{596D90D6-2A17-40D4-895F-599676DDBB96}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Podium.Data", "Podium.Data\Podium.Data.csproj", "{823A4730-F4B1-40C5-9010-47A7F1D6A2DD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Podium.Data", "Podium.Data\Podium.Data.csproj", "{823A4730-F4B1-40C5-9010-47A7F1D6A2DD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Podium.Data.Abstractions", "Podium.Data.Abstractions\Podium.Data.Abstractions.csproj", "{1ED0377D-12CE-45E4-8F6D-12DADF85C6DA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Podium.Data.Abstractions", "Podium.Data.Abstractions\Podium.Data.Abstractions.csproj", "{1ED0377D-12CE-45E4-8F6D-12DADF85C6DA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Podium.Data.ModuleRegistration", "Podium.Data.ModuleRegistration\Podium.Data.ModuleRegistration.csproj", "{C34D585F-DC12-41B8-8B23-6301184B2FB7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Podium.Data.ModuleRegistration", "Podium.Data.ModuleRegistration\Podium.Data.ModuleRegistration.csproj", "{C34D585F-DC12-41B8-8B23-6301184B2FB7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Podium.Data.Primitives", "Podium.Data.Primitives\Podium.Data.Primitives.csproj", "{BF9BD56D-DD4A-4865-996A-CACC8CF886F1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Podium.Data.Primitives", "Podium.Data.Primitives\Podium.Data.Primitives.csproj", "{BF9BD56D-DD4A-4865-996A-CACC8CF886F1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Podium.Service.MappingProfiles", "Podium.Service.MappingProfiles\Podium.Service.MappingProfiles.csproj", "{183D3CFC-2490-47F1-997E-0F58D75F1BB8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Podium.Service.MappingProfiles", "Podium.Service.MappingProfiles\Podium.Service.MappingProfiles.csproj", "{183D3CFC-2490-47F1-997E-0F58D75F1BB8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Podium.Service", "Podium.Service\Podium.Service.csproj", "{2456A1FA-F475-4BC4-B30A-D2BA9C5A2C43}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Podium.Service", "Podium.Service\Podium.Service.csproj", "{2456A1FA-F475-4BC4-B30A-D2BA9C5A2C43}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Podium.Service.Primitives", "Podium.Service.Primitives\Podium.Service.Primitives.csproj", "{83927844-B837-4F3D-AA34-8D2F9058F5F2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Podium.Service.Primitives", "Podium.Service.Primitives\Podium.Service.Primitives.csproj", "{83927844-B837-4F3D-AA34-8D2F9058F5F2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Podium.Service.Common", "Podium.Service.Common\Podium.Service.Common.csproj", "{118C61B0-B599-4A37-B634-5904BF4DE54E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Podium.Service.Common", "Podium.Service.Common\Podium.Service.Common.csproj", "{118C61B0-B599-4A37-B634-5904BF4DE54E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Podium.Service.ModuleRegistration", "Podium.Service.ModuleRegistration\Podium.Service.ModuleRegistration.csproj", "{97018419-3687-4401-A18E-3D640537E6CF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Podium.Service.Abstractions", "Podium.Service.Abstractions\Podium.Service.Abstractions.csproj", "{7673E5B3-4A9F-4122-A322-AD860374E27C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Podium.Shared", "Podium.Shared\Podium.Shared.csproj", "{FEC11CCF-8023-463F-BE42-CCA8D0DAA307}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -75,6 +81,18 @@ Global
 		{118C61B0-B599-4A37-B634-5904BF4DE54E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{118C61B0-B599-4A37-B634-5904BF4DE54E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{118C61B0-B599-4A37-B634-5904BF4DE54E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{97018419-3687-4401-A18E-3D640537E6CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{97018419-3687-4401-A18E-3D640537E6CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{97018419-3687-4401-A18E-3D640537E6CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{97018419-3687-4401-A18E-3D640537E6CF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7673E5B3-4A9F-4122-A322-AD860374E27C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7673E5B3-4A9F-4122-A322-AD860374E27C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7673E5B3-4A9F-4122-A322-AD860374E27C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7673E5B3-4A9F-4122-A322-AD860374E27C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FEC11CCF-8023-463F-BE42-CCA8D0DAA307}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FEC11CCF-8023-463F-BE42-CCA8D0DAA307}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FEC11CCF-8023-463F-BE42-CCA8D0DAA307}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FEC11CCF-8023-463F-BE42-CCA8D0DAA307}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -92,6 +110,9 @@ Global
 		{2456A1FA-F475-4BC4-B30A-D2BA9C5A2C43} = {596D90D6-2A17-40D4-895F-599676DDBB96}
 		{83927844-B837-4F3D-AA34-8D2F9058F5F2} = {596D90D6-2A17-40D4-895F-599676DDBB96}
 		{118C61B0-B599-4A37-B634-5904BF4DE54E} = {596D90D6-2A17-40D4-895F-599676DDBB96}
+		{97018419-3687-4401-A18E-3D640537E6CF} = {596D90D6-2A17-40D4-895F-599676DDBB96}
+		{7673E5B3-4A9F-4122-A322-AD860374E27C} = {596D90D6-2A17-40D4-895F-599676DDBB96}
+		{FEC11CCF-8023-463F-BE42-CCA8D0DAA307} = {EFE7258D-918E-4BA2-9450-DCBE793DB806}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {594AE9B4-BABB-4989-9C1A-61824C653E1D}

@@ -1,6 +1,8 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System;
+using Microsoft.EntityFrameworkCore;
 using Podium.Data.Abstractions;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Podium.Data.Repositories
@@ -17,31 +19,37 @@ namespace Podium.Data.Repositories
             _dbSet = _databaseContext.Set<T>();
         }
 
-        public async Task<T> GetAsync(object id)
+        public virtual async Task<T> GetAsync(object id)
         {
             return await _dbSet.FindAsync(id);
         }
 
-        public async Task<IEnumerable<T>> GetAllAsync()
+        public virtual async Task<IEnumerable<T>> GetAllAsync()
         {
             return await _dbSet.ToListAsync();
         }
 
-        public async Task<T> CreateAsync(T entity)
+        public virtual IQueryable<T> FindBy(System.Linq.Expressions.Expression<Func<T, bool>> predicate)
+        {
+            IQueryable<T> query = _dbSet.Where(predicate);
+            return query;
+        }
+
+        public virtual async Task<T> CreateAsync(T entity)
         {
             var result = await _dbSet.AddAsync(entity);
             await _databaseContext.SaveChangesAsync();
             return result.Entity;
         }
 
-        public async Task<T> UpdateAsync(T entity)
+        public virtual async Task<T> UpdateAsync(T entity)
         {
             var result = _dbSet.Update(entity);
             await _databaseContext.SaveChangesAsync();
             return result.Entity;
         }
 
-        public async Task<bool> DeleteAsync(object id)
+        public virtual async Task<bool> DeleteAsync(object id)
         {
             var entity = await _dbSet.FindAsync(id);
             _dbSet.Remove(entity);

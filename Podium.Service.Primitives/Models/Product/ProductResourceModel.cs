@@ -1,11 +1,14 @@
 ﻿using Podium.Shared;
-using System.ComponentModel.DataAnnotations.Schema;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace Podium.Data.Primitives.Entities
+namespace Podium.Service.Primitives.Models.Product
 {
-    public class Product
+    public class ProductResourceModel
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public string Id { get; set; }
 
         public string Lender { get; set; }
