@@ -45,26 +45,7 @@
             />
           </div>
         </div>
-        <div id="results" v-if="step === 3">
-          <table class="table table-sm">
-            <thead>
-              <tr>
-                <th scope="col">Lender</th>
-                <th scope="col">Interest Rate</th>
-                <th scope="col">Fixed/Variable</th>
-                <th scope="col">Loan-to-value</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr v-for="lender in lenders" :key="lender.id">
-                <th scope="row">{{lender.lender}}</th>
-                <td>{{lender.interestRate}}</td>
-                <td>{{lender.loanType}}</td>
-                <td>{{lender.loanToValue | toPercentage}}</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+        <lender-list v-if="step === 3" v-bind:lenders="this.lenders"/>
         <div class="form-group">
           <button
             type="button"
@@ -92,6 +73,7 @@ import UserDetailApiService from "@/services/api/UserDetails";
 import LoanCalculationApiService from "@/services/api/LoanCalculations";
 import Loading from "vue-loading-overlay";
 import "vue-loading-overlay/dist/vue-loading.css";
+import LenderList from '@/components/LenderList';
 
 export default {
   name: "LenderForm",
@@ -116,11 +98,6 @@ export default {
       fullPage: true,
     };
   },
-  filters: {
-    toPercentage(number) {
-      return parseFloat(number).toFixed(2) + "%";
-    },
-  },
   computed: {
     stepButtonText() {
       return this.step === 1 ? "Continue" : "Calculate";
@@ -128,6 +105,7 @@ export default {
   },
   components: {
     Loading,
+    LenderList
   },
   methods: {
     nextStep() {
