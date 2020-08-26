@@ -1,6 +1,8 @@
-﻿namespace Podium.Data.Abstractions
+﻿using Podium.Data.Primitives.Entities;
+
+namespace Podium.Data.Abstractions
 {
-    public interface IUserDetailsRepository
+    public interface IUserDetailsRepository : IBaseRepository<UserDetails>
     {
     }
 }

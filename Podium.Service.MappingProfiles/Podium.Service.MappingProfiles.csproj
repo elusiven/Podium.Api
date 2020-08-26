@@ -8,4 +8,9 @@
     <PackageReference Include="AutoMapper" Version="10.0.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Podium.Data.Primitives\Podium.Data.Primitives.csproj" />
+    <ProjectReference Include="..\Podium.Service.Primitives\Podium.Service.Primitives.csproj" />
+  </ItemGroup>
+
 </Project>

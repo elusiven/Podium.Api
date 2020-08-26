@@ -4,20 +4,38 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Autofac;
+using Podium.Data.Abstractions;
+using Podium.Data.Repositories;
 
 namespace Podium.Data.ModuleRegistration
 {
     public class DataModule : Module
     {
-        private readonly string _connectionString;
-
-        public DataModule(string connectionString)
+        public DataModule()
         {
-            _connectionString = connectionString;
         }
 
         protected override void Load(ContainerBuilder builder)
         {
+            builder
+                .RegisterType<UserDetailsRepository>()
+                .As<IUserDetailsRepository>()
+                .InstancePerLifetimeScope();
+
+            builder
+                .RegisterType<PropertyDetailsRepository>()
+                .As<IPropertyDetailsRepository>()
+                .InstancePerLifetimeScope();
+
+            builder
+                .RegisterType<ProductRepository>()
+                .As<IProductRepository>()
+                .InstancePerLifetimeScope();
+
+            builder
+                .RegisterType<LoanCalculationRepository>()
+                .As<ILoanCalculationRepository>()
+                .InstancePerLifetimeScope();
         }
     }
 }

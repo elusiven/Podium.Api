@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="10.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="3.1.7" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Podium.Data.Abstractions\Podium.Data.Abstractions.csproj" />
+    <ProjectReference Include="..\Podium.Service.Abstractions\Podium.Service.Abstractions.csproj" />
+    <ProjectReference Include="..\Podium.Service.Common\Podium.Service.Common.csproj" />
+    <ProjectReference Include="..\Podium.Service.Primitives\Podium.Service.Primitives.csproj" />
+  </ItemGroup>
+
+</Project>
