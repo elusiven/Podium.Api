@@ -12,12 +12,12 @@ namespace Podium.Data.Primitives.Entities
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public string Id { get; set; }
 
-        public IEnumerable<Product> Products { get; set; }
+        public ICollection<Product> Products { get; set; }
 
         public string UserDetailsId { get; set; }
-        public UserDetails UserDetails { get; set; }
+        public virtual UserDetails UserDetails { get; set; }
 
         public string PropertyDetailsId { get; set; }
-        public PropertyDetails PropertyDetails { get; set; }
+        public virtual PropertyDetails PropertyDetails { get; set; }
     }
 }

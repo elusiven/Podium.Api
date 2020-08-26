@@ -12,8 +12,8 @@ namespace Podium.Service.Primitives.Models.Product
         public string Id { get; set; }
 
         public string Lender { get; set; }
-        public double InterestRate { get; set; }
+        public decimal InterestRate { get; set; }
         public Enums.LoanType LoanType { get; set; }
-        public double LoanToValue { get; set; }
+        public decimal LoanToValue { get; set; }
     }
 }

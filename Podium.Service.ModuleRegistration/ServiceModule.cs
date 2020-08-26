@@ -27,6 +27,16 @@ namespace Podium.Service.ModuleRegistration
                 .RegisterType<ProductService>()
                 .As<IProductService>()
                 .InstancePerLifetimeScope();
+
+            builder
+                .RegisterType<FinanceCalculationsService>()
+                .As<IFinanceCalculationsService>()
+                .SingleInstance();
+
+            builder
+                .RegisterType<ValidationService>()
+                .As<IValidationService>()
+                .SingleInstance();
         }
     }
 }

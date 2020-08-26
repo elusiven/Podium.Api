@@ -17,6 +17,6 @@ namespace Podium.Data.Primitives.Entities
         public DateTime DateOfBirth { get; set; }
         public string Email { get; set; }
 
-        public IEnumerable<PropertyDetails> PropertyDetailses { get; set; }
+        public virtual IEnumerable<PropertyDetails> PropertyDetailses { get; set; }
     }
 }

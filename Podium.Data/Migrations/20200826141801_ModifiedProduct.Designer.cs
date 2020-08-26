@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Podium.Data;
 
 namespace Podium.Data.Migrations
 {
     [DbContext(typeof(PodiumDbContext))]
-    partial class PodiumDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200826141801_ModifiedProduct")]
+    partial class ModifiedProduct
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -55,9 +57,6 @@ namespace Podium.Data.Migrations
                     b.Property<string>("LoanCalculationId")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("LoanCalculationId1")
-                        .HasColumnType("nvarchar(450)");
-
                     b.Property<decimal>("LoanToValue")
                         .HasColumnType("decimal(18,2)");
 
@@ -67,8 +66,6 @@ namespace Podium.Data.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("LoanCalculationId");
-
-                    b.HasIndex("LoanCalculationId1");
 
                     b.ToTable("Products");
                 });
@@ -134,11 +131,6 @@ namespace Podium.Data.Migrations
                     b.HasOne("Podium.Data.Primitives.Entities.LoanCalculation", null)
                         .WithMany("Products")
                         .HasForeignKey("LoanCalculationId");
-
-                    b.HasOne("Podium.Data.Primitives.Entities.LoanCalculation", null)
-                        .WithMany()
-                        .HasForeignKey("LoanCalculationId1")
-                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("Podium.Data.Primitives.Entities.PropertyDetails", b =>

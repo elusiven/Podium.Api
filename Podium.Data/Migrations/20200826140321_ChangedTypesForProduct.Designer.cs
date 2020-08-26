@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Podium.Data;
 
 namespace Podium.Data.Migrations
 {
     [DbContext(typeof(PodiumDbContext))]
-    partial class PodiumDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200826140321_ChangedTypesForProduct")]
+    partial class ChangedTypesForProduct
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -137,8 +139,7 @@ namespace Podium.Data.Migrations
 
                     b.HasOne("Podium.Data.Primitives.Entities.LoanCalculation", null)
                         .WithMany()
-                        .HasForeignKey("LoanCalculationId1")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("LoanCalculationId1");
                 });
 
             modelBuilder.Entity("Podium.Data.Primitives.Entities.PropertyDetails", b =>

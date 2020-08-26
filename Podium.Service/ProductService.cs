@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.Extensions.Logging;
@@ -47,9 +48,7 @@ namespace Podium.Service
         {
             _logger.LogInformation("ProductService::GetByLTVRatio");
 
-            HashSet<ProductResourceModel> productResourceModels = new HashSet<ProductResourceModel>();
-            productResourceModels = _mapper.Map<HashSet<ProductResourceModel>>(await _productRepository.FindBy(p => p.LoanToValue <= loanToValueRatio);
-            return productResourceModels;
+            throw new NotImplementedException();
         }
     }
 }

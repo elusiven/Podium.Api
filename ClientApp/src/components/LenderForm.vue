@@ -30,11 +30,11 @@
         <div id="form-2" v-if="step === 2">
           <div class="form-group">
             <label>Property Value</label>
-            <input type="text" class="form-control" v-model="propertyValue" />
+            <input type="text" class="form-control" v-model="propertyUserDetail.propertyDetail.propertyValue" />
           </div>
           <div class="form-group">
             <label>Deposit Amount</label>
-            <input type="text" class="form-control" v-model="depositAmount" />
+            <input type="text" class="form-control" v-model="propertyUserDetail.propertyDetail.depositAmount" />
           </div>
         </div>
         <div class="form-group">
@@ -59,53 +59,66 @@
 </template>
 
 <script>
-import UserDetailApiService from '@/services/api/UserDetails';
-import Loading from 'vue-loading-overlay';
-import 'vue-loading-overlay/dist/vue-loading.css';
+import UserDetailApiService from "@/services/api/UserDetails";
+import LoanCalculationApiService from "@/services/api/LoanCalculations";
+import Loading from "vue-loading-overlay";
+import "vue-loading-overlay/dist/vue-loading.css";
 
 export default {
   name: "LenderForm",
-  data: function() {
+  data: function () {
     return {
       step: 1,
       userDetail: {
         firstName: "",
         lastName: "",
         dateOfBirth: Date.now(),
-        email: ""
+        email: "",
       },
-      propertyValue: 0.0,
-      depositAmount: 0.0,
+      propertyUserDetail: {
+        userId: "",
+        propertyDetail:{
+          propertyValue: 0.0,
+          depositAmount: 0.0
+        }
+      },
       isLoading: false,
-      fullPage: true
+      fullPage: true,
     };
   },
   computed: {
     stepButtonText() {
       return this.step === 1 ? "Continue" : "Calculate";
-    }
+    },
   },
   components: {
-    Loading
+    Loading,
   },
   methods: {
     nextStep() {
       if (this.step === 1) {
         this.isLoading = true;
         UserDetailApiService.createUserDetail(JSON.stringify(this.userDetail))
-        .then(() => {
-          if (this.step >= 1 && this.step < 3) this.step++;
-        })
-        .finally(() => this.isLoading = false)
+          .then((response) => {
+            if (this.step >= 1 && this.step < 3) this.step++;
+            console.log(response);
+            this.propertyUserDetail.userId = response.data.id;
+          })
+          .finally(() => (this.isLoading = false));
       }
-    
+
       if (this.step === 2) {
-        
+        this.isLoading = true;
+        LoanCalculationApiService.getMatchingLoansForUser(JSON.stringify(this.propertyUserDetail))
+          .then((response) => {
+            console.log(response);
+          })
+          .finally(() => this.isLoading = false);
       }
     },
     previousStep() {
       if (this.step >= 1) this.step--;
-    }
-  }
+    },
+  },
 };
 </script>
