@@ -26,6 +26,11 @@ namespace Podium.Service
             _mapper = mapper;
         }
 
+        /// <summary>
+        /// Get user detail by ID
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public async Task<UserDetailResourceModel> GetById(string id)
         {
             _logger.LogInformation("UserDetailService::GetById");
@@ -35,6 +40,10 @@ namespace Podium.Service
             return _mapper.Map<UserDetailResourceModel>(userDetailEntity);
         }
 
+        /// <summary>
+        /// Get all user details
+        /// </summary>
+        /// <returns></returns>
         public async Task<HashSet<UserDetailResourceModel>> GetAll()
         {
             _logger.LogInformation("UserDetailService::GetAll");
@@ -44,6 +53,11 @@ namespace Podium.Service
             return userDetails;
         }
 
+        /// <summary>
+        /// Creates a user detail
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         public async Task<UserDetailResourceModel> Create(CreateUserDetailModel model)
         {
             _logger.LogInformation("UserDetailService::Create");

@@ -13,7 +13,7 @@ namespace Podium.Service.Primitives.Models.LoanCalculation
     {
         public string Id { get; set; }
 
-        public IEnumerable<ProductResourceModel> Products { get; set; }
+        public virtual IEnumerable<LoanCalculationProductModel> Products { get; set; }
 
         public string UserDetailsId { get; set; }
         public UserDetailResourceModel UserDetails { get; set; }

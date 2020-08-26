@@ -1,11 +1,4 @@
-﻿using Podium.Shared;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Podium.Service.Primitives.Models.Product
+﻿namespace Podium.Service.Primitives.Models.Product
 {
     public class ProductResourceModel
     {
@@ -13,7 +6,7 @@ namespace Podium.Service.Primitives.Models.Product
 
         public string Lender { get; set; }
         public decimal InterestRate { get; set; }
-        public Enums.LoanType LoanType { get; set; }
+        public string LoanType { get; set; }
         public decimal LoanToValue { get; set; }
     }
 }

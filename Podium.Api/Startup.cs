@@ -47,10 +47,14 @@ namespace Podium.Api
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            // For testing purposes in this test, in production env in a real world scenario this would be more secure
             app.UseCors(builder => builder
                 .AllowAnyOrigin()
                 .AllowAnyMethod()
                 .AllowAnyHeader());
+
+            // Error handler
+            app.UseExceptionHandler("/error");
 
             if (env.IsDevelopment())
             {

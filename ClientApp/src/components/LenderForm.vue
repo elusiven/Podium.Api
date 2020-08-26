@@ -30,12 +30,40 @@
         <div id="form-2" v-if="step === 2">
           <div class="form-group">
             <label>Property Value</label>
-            <input type="text" class="form-control" v-model="propertyUserDetail.propertyDetail.propertyValue" />
+            <input
+              type="text"
+              class="form-control"
+              v-model="propertyUserDetail.propertyDetail.propertyValue"
+            />
           </div>
           <div class="form-group">
             <label>Deposit Amount</label>
-            <input type="text" class="form-control" v-model="propertyUserDetail.propertyDetail.depositAmount" />
+            <input
+              type="text"
+              class="form-control"
+              v-model="propertyUserDetail.propertyDetail.depositAmount"
+            />
           </div>
+        </div>
+        <div id="results" v-if="step === 3">
+          <table class="table table-sm">
+            <thead>
+              <tr>
+                <th scope="col">Lender</th>
+                <th scope="col">Interest Rate</th>
+                <th scope="col">Fixed/Variable</th>
+                <th scope="col">Loan-to-value</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="lender in lenders" :key="lender.id">
+                <th scope="row">{{lender.lender}}</th>
+                <td>{{lender.interestRate}}</td>
+                <td>{{lender.loanType}}</td>
+                <td>{{lender.loanToValue | toPercentage}}</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
         <div class="form-group">
           <button
@@ -51,6 +79,7 @@
             class="btn btn-primary"
             v-show="stepButtonText"
             @click="nextStep"
+            v-if="step < 3"
           >{{ stepButtonText }}</button>
         </div>
       </div>
@@ -77,14 +106,20 @@ export default {
       },
       propertyUserDetail: {
         userId: "",
-        propertyDetail:{
+        propertyDetail: {
           propertyValue: 0.0,
-          depositAmount: 0.0
-        }
+          depositAmount: 0.0,
+        },
       },
+      lenders: [],
       isLoading: false,
       fullPage: true,
     };
+  },
+  filters: {
+    toPercentage(number) {
+      return parseFloat(number).toFixed(2) + "%";
+    },
   },
   computed: {
     stepButtonText() {
@@ -101,19 +136,27 @@ export default {
         UserDetailApiService.createUserDetail(JSON.stringify(this.userDetail))
           .then((response) => {
             if (this.step >= 1 && this.step < 3) this.step++;
-            console.log(response);
             this.propertyUserDetail.userId = response.data.id;
+          })
+          .catch((error) => {
+            console.log(error.response);
           })
           .finally(() => (this.isLoading = false));
       }
 
       if (this.step === 2) {
         this.isLoading = true;
-        LoanCalculationApiService.getMatchingLoansForUser(JSON.stringify(this.propertyUserDetail))
+        LoanCalculationApiService.getMatchingLoansForUser(
+          JSON.stringify(this.propertyUserDetail)
+        )
           .then((response) => {
-            console.log(response);
+            this.lenders = response.data;
+            this.step = 3;
           })
-          .finally(() => this.isLoading = false);
+          .catch((error) => {
+            console.log(error.response);
+          })
+          .finally(() => (this.isLoading = false));
       }
     },
     previousStep() {

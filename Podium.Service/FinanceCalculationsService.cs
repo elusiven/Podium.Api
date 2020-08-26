@@ -12,6 +12,12 @@ namespace Podium.Service
             _logger = logger;
         }
 
+        /// <summary>
+        /// Calculates loan to value ratio
+        /// </summary>
+        /// <param name="propertyValue"></param>
+        /// <param name="depositAmount"></param>
+        /// <returns></returns>
         public decimal CalculateLTVPercentage(decimal propertyValue, decimal depositAmount)
         {
             _logger.LogInformation("FinanceCalculationsService::CalculateLTVPercentage");

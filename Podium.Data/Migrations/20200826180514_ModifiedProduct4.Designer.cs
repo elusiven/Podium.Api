@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Podium.Data;
 
 namespace Podium.Data.Migrations
 {
     [DbContext(typeof(PodiumDbContext))]
-    partial class PodiumDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200826180514_ModifiedProduct4")]
+    partial class ModifiedProduct4
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -47,14 +49,12 @@ namespace Podium.Data.Migrations
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("LoanCalculationId")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ProductId")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("LoanCalculationId");
 
                     b.ToTable("LoanCalculationProducts");
                 });
@@ -71,6 +71,9 @@ namespace Podium.Data.Migrations
                     b.Property<string>("Lender")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("LoanCalculationId")
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<decimal>("LoanToValue")
                         .HasColumnType("decimal(18,2)");
 
@@ -78,6 +81,8 @@ namespace Podium.Data.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("LoanCalculationId");
 
                     b.ToTable("Products");
                 });
@@ -138,7 +143,7 @@ namespace Podium.Data.Migrations
                         .HasForeignKey("UserDetailsId");
                 });
 
-            modelBuilder.Entity("Podium.Data.Primitives.Entities.LoanCalculationProduct", b =>
+            modelBuilder.Entity("Podium.Data.Primitives.Entities.Product", b =>
                 {
                     b.HasOne("Podium.Data.Primitives.Entities.LoanCalculation", null)
                         .WithMany("Products")

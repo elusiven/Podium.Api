@@ -3,7 +3,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace Podium.Tests
 {
     [TestClass]
-    public class BaseTest
+    public abstract class BaseTest
     {
         public BaseTest()
         {

@@ -9,7 +9,7 @@ namespace Podium.Data.Repositories
 {
     public abstract class BaseRepository<T> : IBaseRepository<T> where T : class
     {
-        private readonly PodiumDbContext _databaseContext;
+        protected readonly PodiumDbContext _databaseContext;
         private DbSet<T> _dbSet;
 
         public BaseRepository(

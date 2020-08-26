@@ -44,11 +44,11 @@ namespace Podium.Service
         /// </summary>
         /// <param name="model"></param>
         /// <returns>A collection of available loans for a user</returns>
-        public async Task<LoanCalculationResourceModel> CalculateLoansAsync(CreateLoanCalculationModel model)
+        public async Task<List<ProductResourceModel>> CalculateLoansAsync(CreateLoanCalculationModel model)
         {
             _logger.LogInformation("LoanCalculationService::CalculateLoansAsync");
 
-            LoanCalculationResourceModel resourceModel = new LoanCalculationResourceModel();
+            List<ProductResourceModel> resourceModel = new List<ProductResourceModel>();
 
             var user = await _userDetailService.GetById(model.UserId);
             if (user == null) throw new LoanCalculationServiceException($"User with ID {model.UserId} is not found");
@@ -58,13 +58,28 @@ namespace Podium.Service
             var ltv = _financeCalculationsService.CalculateLTVPercentage(model.PropertyDetail.PropertyValue,
                 model.PropertyDetail.DepositAmount);
 
+            var loanCalculation = _mapper.Map<LoanCalculationResourceModel>(await _loanCalculationRepository.CreateAsync(_mapper.Map<LoanCalculation>(model)));
+
             if (ltv < 90)
-                resourceModel.Products = new List<ProductResourceModel>(await _productService.GetAll());
+            {
+                var products = await _productService.GetAll();
+                var productListToAdd = new List<LoanCalculationProductModel>();
 
-            resourceModel.UserDetailsId = model.UserId;
-            resourceModel.PropertyDetails = model.PropertyDetail;
+                foreach (var product in products)
+                {
+                    productListToAdd.Add(new LoanCalculationProductModel()
+                    {
+                        LoanCalculationId = loanCalculation.Id,
+                        ProductId = product.Id
+                    });
+                }
 
-            await _loanCalculationRepository.CreateAsync(_mapper.Map<LoanCalculation>(resourceModel));
+                loanCalculation.Products = new List<LoanCalculationProductModel>(productListToAdd);
+                resourceModel.AddRange(products);
+            }
+
+            loanCalculation.UserDetailsId = model.UserId;
+            loanCalculation.PropertyDetails = model.PropertyDetail;
 
             return resourceModel;
         }

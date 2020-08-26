@@ -11,6 +11,7 @@ namespace Podium.Data
         }
 
         public DbSet<Product> Products { get; set; }
+        public DbSet<LoanCalculationProduct> LoanCalculationProducts { get; set; }
         public DbSet<PropertyDetails> PropertyDetails { get; set; }
         public DbSet<UserDetails> UserDetails { get; set; }
         public DbSet<LoanCalculation> LoanCalculations { get; set; }

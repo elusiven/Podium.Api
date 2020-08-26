@@ -6,6 +6,7 @@ using Podium.Service.Primitives.Models.LoanCalculation;
 
 namespace Podium.Api.Controllers.V1
 {
+    [Route("api/v{version:apiVersion}/[controller]")]
     [Route("api/[controller]")]
     [ApiController]
     public class LoanCalculationController : ControllerBase
@@ -24,6 +25,8 @@ namespace Podium.Api.Controllers.V1
         [HttpPost]
         public async Task<IActionResult> Create(CreateLoanCalculationModel model)
         {
+            _logger.LogInformation("LoanCalculationController::Create");
+
             if (!ModelState.IsValid) return BadRequest(ModelState);
 
             return Ok(await _loanCalculationService.CalculateLoansAsync(model));

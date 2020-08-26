@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using AutoMapper;
+﻿using AutoMapper;
 using Microsoft.Extensions.Logging;
 using Podium.Data.Abstractions;
 using Podium.Service.Abstractions;
 using Podium.Service.Common.Exceptions;
 using Podium.Service.Primitives.Models.Product;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Podium.Service
 {
@@ -26,6 +25,11 @@ namespace Podium.Service
             _mapper = mapper;
         }
 
+        /// <summary>
+        /// Gets product resource model
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public async Task<ProductResourceModel> Get(string id)
         {
             _logger.LogInformation("ProductService::GetById");
@@ -35,6 +39,10 @@ namespace Podium.Service
             return _mapper.Map<ProductResourceModel>(productEntity);
         }
 
+        /// <summary>
+        /// Gets all product resource models
+        /// </summary>
+        /// <returns></returns>
         public async Task<HashSet<ProductResourceModel>> GetAll()
         {
             _logger.LogInformation("ProductService::GetAll");
@@ -42,13 +50,6 @@ namespace Podium.Service
             HashSet<ProductResourceModel> productResourceModels = new HashSet<ProductResourceModel>();
             productResourceModels = _mapper.Map<HashSet<ProductResourceModel>>(await _productRepository.GetAllAsync());
             return productResourceModels;
-        }
-
-        public async Task<HashSet<ProductResourceModel>> GetByLTVRatio(decimal loanToValueRatio)
-        {
-            _logger.LogInformation("ProductService::GetByLTVRatio");
-
-            throw new NotImplementedException();
         }
     }
 }
