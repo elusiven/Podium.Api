@@ -80,6 +80,8 @@ namespace Podium.Service
 
             loanCalculation.UserDetailsId = model.UserId;
             loanCalculation.PropertyDetails = model.PropertyDetail;
+            
+            // TODO:: Save changes to DB
 
             return resourceModel;
         }
